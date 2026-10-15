@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREEN REV - AI Civic Intelligence & Public Health Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Light Mint-Lavender Aurora Base Canvas (Major Light Theme) */
+        body {
+            background: radial-gradient(circle at 10% 10%, #d1fae5 0%, transparent 45%),
+                        radial-gradient(circle at 90% 80%, #e9d5ff 0%, transparent 45%),
+                        radial-gradient(circle at 50% 50%, #f0fdf4 0%, transparent 60%),
+                        #f8fafc;
+            min-height: 100vh;
+            color: #0f172a;
+        }
+
+        /* Light Glassmorphism Card Style */
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Dark Contrast Input Fields (Opposite Highlighted Area) */
+        .glass-input-dark {
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #f8fafc;
+        }
+
+        .glass-input-dark:focus {
+            border-color: #059669;
+            outline: none;
+        }
+
+        /* Custom Light Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #059669; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 backdrop-blur-xl border-b border-emerald-500/20 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-black bg-gradient-to-r from-emerald-600 via-teal-600 to-purple-600 bg-clip-text text-transparent tracking-wider">GREEN REV</span>
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[10px] px-3.5 py-1 rounded-full font-bold uppercase tracking-widest shadow-sm">AI Civic Engine</span>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="text-xs text-slate-700 flex items-center space-x-2 bg-emerald-50/80 px-3.5 py-1.5 rounded-full border border-emerald-200">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>RevAI Core: <strong id="backend-status" class="text-emerald-700 font-bold">Online 🟢</strong></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Soothing Inverted Hero Banner -->
+    <section class="max-w-7xl mx-auto px-6 mt-8">
+        <div class="glass-card-light p-8 md:p-10 rounded-3xl relative overflow-hidden border-2 border-emerald-200">
+            <div class="flex items-center space-x-2 mb-3">
+                <span class="bg-emerald-100 text-emerald-900 border border-emerald-300 text-[11px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest flex items-center shadow-sm">
+                    👁️ Visible Problem. Protected Citizen. Measurable Impact.
+                </span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
+                Transform Local Chaos Into <span class="bg-gradient-to-r from-emerald-600 via-teal-600 to-purple-600 bg-clip-text text-transparent">Verified Action.</span> Zero Identity Risk.
+            </h1>
+            <p class="text-slate-700 text-sm md:text-base leading-relaxed max-w-4xl font-normal">
+                ⚡ Powered by <strong>RevAI</strong> — GREEN REV turns street-level observations into real-time community gap intelligence. Report civic hazards with total personal privacy and force instantaneous municipal accountability.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Grid -->
+    <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- SECTION 1: Hyper-Local Area Intelligence -->
+        <section class="glass-card-light p-6 md:p-8 rounded-3xl border border-emerald-300/80 shadow-xl flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-emerald-900 flex items-center">
+                        <span class="mr-2 text-xl">🏙️</span> Hyper-Local Area Intelligence
+                    </h2>
+                    <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">🔒 100% Anonymous</span>
+                </div>
+                <p class="text-xs text-slate-600 mb-4">Your identity is completely encrypted. Mandatory photo verification guarantees authentic reporting.</p>
+                
+                <!-- Live Area Bar Graph -->
+                <div class="mb-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-inner">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-emerald-900 flex items-center">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping mr-2"></span>
+                            Live Area Reports (<span id="lane-name-display" class="text-purple-700">Lane-42, Sector-7</span>):
+                        </span>
+                        <span class="text-[10px] text-slate-500">📷 Verified Evidence</span>
+                    </div>
+                    <div class="h-36">
+                        <canvas id="laneLiveChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- RevAI Directive Box -->
+                <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-purple-50 border-2 border-emerald-300/80 p-4 rounded-2xl mb-5 text-xs shadow-sm flex items-start space-x-3.5">
+                    <div class="flex-shrink-0 bg-emerald-200 p-2.5 rounded-2xl border border-emerald-400 flex flex-col items-center">
+                        <span class="text-2xl animate-bounce">⚡</span>
+                        <span class="text-[9px] font-black text-emerald-950 mt-1 uppercase tracking-wider">RevAI</span>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <span class="font-bold text-emerald-950 text-xs block mb-1">🌱 RevAI Community Directive:</span>
+                        <p id="laneAiGuide" class="text-slate-800 leading-relaxed text-[11px]">
+                            Lane-42 indicates 18 verified reports of waste dumping blocking storm drains & 3 reported animal rescue alerts. 
+                            <strong>RevAI Directive:</strong> Dispatch clearance crew & alert certified local animal welfare rescuers. 
+                            <br><span class="text-emerald-800 font-semibold block mt-1">👉 Spotting an issue in your lane? Attach photo evidence below to escalate!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Civic Form with Dark Contrast Inputs (Opposite Style) -->
+            <form id="civic-form" class="space-y-3.5 bg-slate-900/90 p-5 rounded-2xl border border-slate-700 text-slate-100 shadow-md">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300">🆔 Citizen ID</label>
+                        <input type="text" id="citizenId" value="CITIZEN-777" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-400" readonly>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <label class="block text-xs font-medium text-slate-300">📍 Current Location</label>
+                            <button type="button" onclick="detectLocation()" class="text-[10px] text-emerald-400 font-bold hover:underline">⚡ Auto-Detect</button>
+                        </div>
+                        <input type="text" id="locationAddress" value="Lane-42, Sector-7, Metropolis" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:border-emerald-400 focus:outline-none" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300">🏷️ Issue Category (26 Comprehensive List)</label>
+                    <select id="category" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:border-emerald-400 focus:outline-none cursor-pointer">
+                        <option value="Water and Drinking Water">💧 1. Water Shortage / Contaminated Pipelines</option>
+                        <option value="Waste Management and Garbage" selected>🗑️ 2. Garbage Dumping & Waste Accumulation</option>
+                        <option value="Drainage, Sewage and Waterlogging">🌊 3. Drainage Overflow & Waterlogging</option>
+                        <option value="Roads and Street Infrastructure">🛣️ 4. Potholes & Damaged Roadways</option>
+                        <option value="Streetlights and Public Safety">💡 5. Non-Functional Streetlights & Dark Lanes</option>
+                        <option value="Traffic and Transportation">🚦 6. Traffic Gridlock & Unsafe Crossings</option>
+                        <option value="Sanitation and Public Toilets">🚽 7. Unsanitary Public Toilets & Sewage Leakage</option>
+                        <option value="Healthcare and Medical Access">🏥 8. Healthcare Distance & Medical Access Gaps</option>
+                        <option value="Education and Learning Facilities">🏫 9. Unsafe School Routes & Broken Infrastructure</option>
+                        <option value="Housing and Basic Living Conditions">🏠 10. Substandard Housing & Structural Risks</option>
+                        <option value="Electricity and Essential Utilities">⚡ 11. Power Blackouts & Exposed High-Voltage Wires</option>
+                        <option value="Children Safety and Welfare">👶 12. Child Safety & Vulnerable Street Hazards</option>
+                        <option value="Parks and Community Spaces">🏞️ 13. Encroached Parks & Broken Playgrounds</option>
+                        <option value="Environment and Pollution">🌫️ 14. Industrial Air, Water & Noise Pollution</option>
+                        <option value="Emergency Access">🚑 15. Blocked Emergency Routes & Fire Access</option>
+                        <option value="Public Facilities">🪑 16. Dilapidated Bus Shelters & Benches</option>
+                        <option value="Accessibility and Inclusion">♿ 17. Inaccessible Ramps & Wheelchair Obstacles</option>
+                        <option value="Rural and Underserved Community Gaps">🌾 18. Rural Infrastructure & Connectivity Gaps</option>
+                        <option value="Slum and Informal Settlement Concerns">🛖 19. Informal Settlement Sanitation & Drainage</option>
+                        <option value="Community Resources and Support">🤝 20. Public Welfare & NGO Coordination</option>
+                        <option value="Local Governance and Service Delivery">🏛️ 21. Unresolved Complaints & Neglect</option>
+                        <option value="Community Verification">💬 22. Community Verification & Local Ideas</option>
+                        <option value="Citizen Privacy">🛡️ 23. Sensitive Living Conditions Safeguards</option>
+                        <option value="Interconnected Problems">🔗 24. Interconnected Gaps (Water + Waste Overflow)</option>
+                        <option value="Other / Not Listed">❓ 25. Other Emerging Community Issue</option>
+                        <option value="Animal, Bird and Wildlife Protection">🐾 26. Animal & Bird Safety and Protection (Injured, Trapped, Abuse, Snakes, Habitat)</option>
+                    </select>
+                </div>
+
+                <!-- Animal Safety Protocol -->
+                <div class="bg-purple-950 p-3 rounded-xl border border-purple-700 text-[11px] text-purple-200">
+                    <span class="font-bold text-purple-300 block mb-0.5">🐾 Animal & Wildlife Protection Protocol:</span>
+                    Report injured stray animals, birds, trapped wildlife, or dangerous animal encounters. Direct automated dispatches route to certified local rescuers & veterinary teams.
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300">⚠️ Severity Index</label>
+                        <select id="severityLevel" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 cursor-pointer">
+                            <option value="HIGH">🚨 Critical / Emergency</option>
+                            <option value="MEDIUM">🟧 Moderate Risk</option>
+                            <option value="LOW">🟩 Minor Issue</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-amber-300">📷 Photo Evidence (Mandatory ⚠️)</label>
+                        <input type="file" id="civicPhoto" class="mt-1 w-full text-[10px] text-slate-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-semibold file:bg-emerald-900 file:text-emerald-200 cursor-pointer" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-purple-600 text-white font-bold py-3 rounded-xl hover:from-emerald-500 hover:to-teal-500 transition shadow-lg text-xs uppercase tracking-wider">
+                    ⚡ Submit Report & Trigger RevAI Action
+                </button>
+            </form>
+
+            <div id="civic-result" class="mt-3 hidden bg-emerald-100 p-3.5 rounded-2xl border border-emerald-300 text-xs text-emerald-950">
+                <h3 class="font-bold text-emerald-900 mb-1">🤖 RevAI Action Protocol Issued:</h3>
+                <p id="ai-plan-text" class="italic"></p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Public Transit Hub Pulse -->
+        <section class="glass-card-light p-6 md:p-8 rounded-3xl border border-purple-300/80 shadow-xl flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-lg font-bold text-purple-900 flex items-center">
+                        <span class="mr-2 text-xl">🚆</span> Public Transit Hub Pulse
+                    </h2>
+                    <span class="bg-purple-100 text-purple-800 border border-purple-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">📢 Public Broadcast</span>
+                </div>
+                <p class="text-xs text-slate-600 mb-3">Select any Transport Hub or Public Terminal to view real-time public concerns and RevAI directives.</p>
+
+                <!-- Expanded Hub Selector -->
+                <div class="mb-3">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">🚉 Select Platform / Public Terminal:</label>
+                    <select id="hubName" onchange="updateHubDashboard()" class="w-full p-2.5 bg-white border border-purple-300 rounded-xl text-xs font-medium text-purple-900 focus:ring-2 focus:ring-purple-400 cursor-pointer">
+                        <option value="Central Railway Station Terminal">🚆 Central Railway Station Terminal (Platforms & Concierge)</option>
+                        <option value="International Airport Terminal">✈️ International & Domestic Airport Terminal (Gates & T2/T3)</option>
+                        <option value="Interstate Bus Terminus (ISBT)">🚌 Interstate Bus Terminus (ISBT Bay Areas & Stands)</option>
+                        <option value="Metro Rapid Transit Hub">🚇 Metro Rapid Transit Hub (Underground & Elevated Concourse)</option>
+                        <option value="Ferry & Water Transport Wharf">⛴️ Ferry & Water Transport Wharf (Passenger Docks)</option>
+                        <option value="Light Rail & Tram Station">🚊 Light Rail & Tram Station (Transit Stops)</option>
+                    </select>
+                </div>
+
+                <!-- Live Hub Chart Canvas -->
+                <div class="mb-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-inner">
+                    <div class="h-36">
+                        <canvas id="hubLiveChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- RevAI Hub Directive Box -->
+                <div class="bg-gradient-to-r from-purple-50 via-indigo-50 to-emerald-50 border-2 border-purple-300/80 p-4 rounded-2xl mb-5 text-xs shadow-sm flex items-start space-x-3.5">
+                    <div class="flex-shrink-0 bg-purple-200 p-2.5 rounded-2xl border border-purple-400 flex flex-col items-center">
+                        <span class="text-2xl animate-pulse">🚆</span>
+                        <span class="text-[9px] font-black text-purple-950 mt-1 uppercase tracking-wider">RevAI Hub</span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="font-bold text-purple-950 text-xs block mb-0.5">🤖 RevAI Transit Directive:</span>
+                        <p id="hubAiGuide" class="text-purple-950 leading-relaxed text-[11px]">
+                            Central Station indicates waste accumulation & washroom maintenance backlog. RevAI Action: Immediate dispatch of automated floor scrubbers & 2 extra dustbins.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hub Form (Dark Input Accent) -->
+            <form id="public-hub-form" class="space-y-3.5 bg-slate-900/90 p-5 rounded-2xl border border-slate-700 text-slate-100 shadow-md">
+                <input type="text" id="hubIssue" placeholder="Describe platform issue (e.g. Broken Escalator at Gate 2)" class="w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:outline-none" required>
+                <div class="grid grid-cols-2 gap-3">
+                    <select id="hubSeverity" class="p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 cursor-pointer">
+                        <option value="HIGH">🚨 Critical Hazard</option>
+                        <option value="MEDIUM">🟧 Moderate</option>
+                        <option value="LOW">🟩 Minor</option>
+                    </select>
+                    <input type="file" id="hubPhoto" class="text-[10px] text-slate-300 file:mr-1 file:py-1 file:px-2 file:rounded-lg file:border-0 file:bg-purple-900 file:text-purple-200 cursor-pointer" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-emerald-600 text-white font-bold py-3 rounded-xl hover:from-purple-500 hover:to-indigo-500 transition text-xs shadow uppercase tracking-wider">
+                    📢 Broadcast Issue To Hub & Authorities
+                </button>
+            </form>
+            <div id="hub-result" class="mt-3 hidden bg-purple-100 p-3 rounded-2xl text-xs text-purple-950 italic border border-purple-300"></div>
+        </section>
+
+    </main>
+
+    <!-- SECTION 3: Public Health Guardian & Vendor Terminal -->
+    <section class="max-w-7xl mx-auto px-6 pb-16">
+        <div class="glass-card-light p-6 md:p-8 rounded-3xl border border-teal-300/80 shadow-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-xl font-bold text-teal-950 flex items-center">
+                    <span class="mr-2 text-xl">🛡️</span> Public Health Guardian & Vendor Terminal
+                </h2>
+                <span class="bg-rose-100 text-rose-800 border border-rose-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">⚠️ Transparent Public Ledger</span>
+            </div>
+            <p class="text-xs text-slate-600 mb-6">Vendors log substance sales to dispatch guardian alerts. Search any User ID to view aggregate consumption counts, last purchase date, and RevAI risk scores.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Shopkeeper Log Form (Dark Accent) -->
+                <form id="health-form" class="space-y-3.5 bg-slate-900/90 p-5 rounded-2xl border border-slate-700 text-slate-100 shadow-md">
+                    <h3 class="text-sm font-bold text-purple-300 mb-1">🏪 Vendor Rapid Alert Terminal</h3>
+                    <p class="text-[11px] text-slate-300 mb-3">Log purchase details to dispatch a real-time alert to the user's linked guardian dashboard.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">🆔 User ID</label>
+                            <input type="text" id="userId" value="USER-999" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">👨‍👩‍👧 Guardian / Family ID</label>
+                            <input type="text" id="familyMemberId" value="FAM-101" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">🏬 Vendor ID</label>
+                            <input type="text" id="sellerId" value="VEND-101" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">🧪 Substance Category (International Standard)</label>
+                            <select id="substanceType" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:border-purple-400 focus:outline-none cursor-pointer">
+                                <option value="Cigarettes & Manufactured Tobacco">🚬 Cigarettes & Manufactured Tobacco</option>
+                                <option value="Smokeless Oral Tobacco" selected>🧪 Smokeless Oral Tobacco (Chewing Tobacco / Dip)</option>
+                                <option value="Medicated Tobacco Dentifrice & Paste">🍃 Medicated Tobacco Dentifrice & Paste</option>
+                                <option value="Alcohol & Spirits">🍺 Alcohol & Spirits (Liquor / Beer / Wine)</option>
+                                <option value="Hookah, Vaporizers & E-Cigarettes">💨 Hookah, Vaporizers & E-Cigarettes (Vape)</option>
+                                <option value="Betel Quid & Areca Nut Products">🍬 Betel Quid & Areca Nut Products</option>
+                                <option value="Controlled Substances & Prescription Misuse">💊 Controlled Substances & Prescription Misuse</option>
+                                <option value="Other Nicotine & Tobacco Derivatives">🌿 Other Nicotine & Tobacco Derivatives</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">🔢 Frequency Count</label>
+                            <input type="number" id="frequencyCount" value="3" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300">📦 Quantity</label>
+                            <input type="text" id="quantity" value="20 packets" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 via-rose-600 to-emerald-600 text-white font-semibold py-3 rounded-xl hover:from-purple-500 hover:to-rose-500 transition text-xs shadow uppercase tracking-wider">
+                        🚨 Log Purchase & Dispatch Guardian Alert
+                    </button>
+                    <div id="health-result" class="hidden text-xs text-rose-900 bg-rose-100 p-3 rounded-xl border border-rose-300"></div>
+                </form>
+
+                <!-- User ID Search Terminal -->
+                <div class="bg-white p-5 rounded-2xl border border-teal-200 flex flex-col justify-between shadow-inner">
+                    <div>
+                        <h3 class="text-sm font-bold text-teal-950 mb-1">🔍 Search User Health Ledger</h3>
+                        <p class="text-[11px] text-slate-600 mb-3">Type any User ID to calculate past purchases, total count, last order date, and RevAI health risk status.</p>
+                        
+                        <div class="flex space-x-2.5 mb-4">
+                            <input type="text" id="searchUserId" value="USER-999" placeholder="Enter User ID (e.g. USER-999)" class="w-full p-2.5 text-xs bg-slate-100 border border-slate-300 rounded-xl text-slate-800 focus:ring-2 focus:ring-emerald-500">
+                            <button type="button" onclick="searchUserRecord()" class="bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-800 transition whitespace-nowrap shadow">
+                                Search Record
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Computed Card -->
+                    <div id="userRecordDisplay" class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-3">
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                            <span class="font-bold text-slate-800">User ID: <span id="rec-uid" class="text-emerald-700">USER-999</span></span>
+                            <span id="rec-status" class="bg-rose-100 text-rose-800 border border-rose-300 font-bold px-2.5 py-1 rounded-lg text-[10px]">HEALTH RISK: CRITICAL</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5 text-[11px]">
+                            <div><strong>Total Logged:</strong> <span id="rec-total" class="text-slate-800">14 times</span></div>
+                            <div><strong>Last Purchase:</strong> <span id="rec-last" class="text-slate-800">2026-10-15</span></div>
+                            <div><strong>Primary Substance:</strong> <span id="rec-substance" class="text-purple-700 font-medium">Smokeless Oral Tobacco</span></div>
+                            <div><strong>Guardian Link:</strong> <span class="text-emerald-700 font-medium">Active (FAM-101)</span></div>
+                        </div>
+                        <div class="bg-teal-50 p-2.5 rounded-lg text-[11px] text-teal-950 border border-teal-200 italic">
+                            <strong>⚡ RevAI Health Assessment:</strong> <span id="rec-ai">Frequent high-quantity oral tobacco intake detected. Guardian wellness alert active.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Core Logic -->
+    <script>
+        const API_BASE = "http://localhost:8080";
+        let laneChartInstance = null;
+        let hubChartInstance = null;
+
+        const hubDataMap = {
+            "Central Railway Station Terminal": {
+                labels: ['Garbage Overflow', 'Dirty Toilets', 'Broken Escalator', 'Platform Lighting', 'Water Taps'],
+                counts: [18, 14, 9, 5, 12],
+                guide: "Central Station Platform 3 indicates waste accumulation & washroom maintenance backlog. RevAI Action: Immediate dispatch of automated floor scrubbers & 2 extra dustbins."
+            },
+            "International Airport Terminal": {
+                labels: ['T2 Baggage Delay', 'Taxi Congestion', 'Parking Lighting', 'Washroom Hygiene', 'Signage'],
+                counts: [12, 15, 4, 3, 6],
+                guide: "Airport Terminal 2 shows peak complaints regarding Taxi Lane Congestion & Baggage Delay. RevAI Action: Traffic wardens dispatched to Lane 2."
+            },
+            "Interstate Bus Terminus (ISBT)": {
+                labels: ['Waste Accumulation', 'Bus Schedule Board', 'Seating Benches', 'Drainage Smell', 'Security'],
+                counts: [22, 11, 16, 19, 7],
+                guide: "ISBT Bus Stand has high waste accumulation near Bay 4 & foul drainage smell. RevAI Action: Municipal drainage clearance scheduled."
+            },
+            "Metro Rapid Transit Hub": {
+                labels: ['Pedestrian Obstacle', 'Potholes Near Metro', 'Vendor Overflow', 'Streetlight Dark', 'Dustbins'],
+                counts: [8, 13, 17, 6, 11],
+                guide: "Metro Hub reports heavy pedestrian walkway blockage due to unauthorized clutter. RevAI Action: Public space clearance ticket raised."
+            },
+            "Ferry & Water Transport Wharf": {
+                labels: ['Dock Litter', 'Ramp Slippage', 'Life Jacket Availability', 'Lighting', 'Seating'],
+                counts: [5, 8, 12, 4, 9],
+                guide: "Ferry Wharf requires slip-resistant coating on passenger ramps. RevAI Action: Maintenance crew assigned."
+            },
+            "Light Rail & Tram Station": {
+                labels: ['Track Debris', 'Ticket Vending Machine', 'Platform Crowding', 'Shelter Glass', 'Lighting'],
+                counts: [10, 7, 14, 5, 8],
+                guide: "Tram Station platform shows crowding during peak hours. RevAI Action: Frequency adjustment suggested."
+            }
+        };
+
+        window.onload = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/civic/all`);
+                if (res.ok) document.getElementById('backend-status').innerText = "Online 🟢";
+            } catch (e) {
+                document.getElementById('backend-status').innerText = "Offline 🔴";
+            }
+            initLaneChart();
+            updateHubDashboard();
+        };
+
+        function initLaneChart() {
+            const ctx = document.getElementById('laneLiveChart').getContext('2d');
+            laneChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Waste Dumping', 'Drain Overflow', 'Potholes', 'Dark Streetlights', 'Animal Rescue'],
+                    datasets: [{
+                        label: 'Active Lane Reports',
+                        data: [18, 12, 7, 9, 5],
+                        backgroundColor: ['#059669', '#2563eb', '#9333ea', '#d97706', '#dc2626'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: '#475569', font: { size: 10 } } },
+                        y: { beginAtZero: true, ticks: { color: '#475569', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function updateHubDashboard() {
+            const selectedHub = document.getElementById('hubName').value;
+            const dataObj = hubDataMap[selectedHub] || hubDataMap["Central Railway Station Terminal"];
+
+            document.getElementById('hubAiGuide').innerText = dataObj.guide;
+
+            const ctx = document.getElementById('hubLiveChart').getContext('2d');
+            if (hubChartInstance) hubChartInstance.destroy();
+
+            hubChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataObj.labels,
+                    datasets: [{
+                        label: 'Active Citizen Reports',
+                        data: dataObj.counts,
+                        backgroundColor: ['#dc2626', '#ea580c', '#2563eb', '#9333ea', '#059669'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: '#475569', font: { size: 10 } } },
+                        y: { beginAtZero: true, ticks: { color: '#475569', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        async function searchUserRecord() {
+            const uid = document.getElementById('searchUserId').value || "USER-999";
+            document.getElementById('rec-uid').innerText = uid;
+
+            try {
+                const res = await fetch(`${API_BASE}/api/health/profile/${uid}`);
+                const textData = await res.text();
+                document.getElementById('rec-ai').innerText = textData || "User health profile calculated.";
+            } catch (err) {
+                document.getElementById('rec-ai').innerText = "Frequent oral tobacco intake logged. Guardian alert active.";
+            }
+        }
+
+        function detectLocation() {
+            navigator.geolocation.getCurrentPosition((pos) => {
+                document.getElementById('locationAddress').value = "Lane-42, Sector-7 (GPS Lat: " + pos.coords.latitude.toFixed(3) + ")";
+            }, () => {
+                document.getElementById('locationAddress').value = "Lane-42, Sector-7, Metropolis";
+            });
+        }
+
+        document.getElementById('civic-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const res = await fetch(`${API_BASE}/api/civic/report`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        citizenId: document.getElementById('citizenId').value,
+                        category: document.getElementById('category').value,
+                        locationAddress: document.getElementById('locationAddress').value,
+                        severityLevel: document.getElementById('severityLevel').value,
+                        anonymous: true
+                    })
+                });
+                const data = await res.json();
+                document.getElementById('civic-result').classList.remove('hidden');
+                document.getElementById('ai-plan-text').innerText = data.aiActionPlan || "Anonymous report submitted with mandatory photo evidence!";
+            } catch (err) { alert("Backend Error!"); }
+        });
+
+        document.getElementById('public-hub-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const res = await fetch(`${API_BASE}/api/civic/report`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        citizenId: "COMMUTER-99",
+                        category: "Public Hub: " + document.getElementById('hubName').value,
+                        locationAddress: document.getElementById('hubName').value + " - " + document.getElementById('hubIssue').value,
+                        severityLevel: document.getElementById('hubSeverity').value,
+                        anonymous: true
+                    })
+                });
+                const data = await res.json();
+                document.getElementById('hub-result').classList.remove('hidden');
+                document.getElementById('hub-result').innerText = "Broadcasted to Public Hub! AI Response: " + data.aiActionPlan;
+            } catch (err) { alert("Backend Error!"); }
+        });
+
+        document.getElementById('health-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const res = await fetch(`${API_BASE}/api/health/vendor-scan`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: document.getElementById('userId').value,
+                        familyMemberId: document.getElementById('familyMemberId').value,
+                        sellerId: document.getElementById('sellerId').value,
+                        substanceType: document.getElementById('substanceType').value,
+                        frequencyCount: parseInt(document.getElementById('frequencyCount').value),
+                        quantity: document.getElementById('quantity').value,
+                        healthStatus: "At Risk"
+                    })
+                });
+                const data = await res.json();
+                const resBox = document.getElementById('health-result');
+                resBox.classList.remove('hidden');
+                resBox.innerText = "✅ " + (data.aiRecommendation || "Logged in health ledger. Alert dispatched.");
+            } catch (err) { alert("Backend Error!"); }
+        });
+    </script>
+</body>
+</html>

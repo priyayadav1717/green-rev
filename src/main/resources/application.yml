@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://34.131.59.235:5432/greenrev
+    username: postgres
+    password: Radha17@
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+google:
+  gemini:
+    api-key: ${GEMINI_API_KEY:AQ.Ab8RN6Iz39go8TtSRgzXLxhGoFe-ifyUco64432iKR5zwm0Sng}
