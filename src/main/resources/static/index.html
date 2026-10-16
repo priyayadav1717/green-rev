@@ -108,9 +108,9 @@
                     <div class="flex-1">
                         <span class="font-bold text-emerald-950 text-xs block mb-1">🌱 RevAI Community Directive:</span>
                         <p id="laneAiGuide" class="text-slate-800 leading-relaxed text-[11px]">
-                            [IDENTIFIED HAZARD]: Lane-42 indicates 18 verified reports of waste dumping blocking storm drains & 3 reported animal rescue alerts.<br>
-                            [SOLUTION PLAN]: Immediate dispatch of civic clearance crew and automated routing to certified animal welfare rescuers.<br>
-                            [DISPATCH STATUS]: Rapid Response Field Unit assigned. Resolution in progress.
+                            <strong>[IDENTIFIED HAZARD]:</strong> Lane-42 indicates 18 verified reports of waste dumping blocking storm drains & 3 reported animal rescue alerts.<br>
+                            <strong>[SOLUTION PLAN]:</strong> Dispatch clearance crew & alert certified local animal welfare rescuers.<br>
+                            <strong>[DISPATCH STATUS]:</strong> Specialized Civic Action Task Force assigned. Resolution in progress.
                         </p>
                     </div>
                 </div>
@@ -132,16 +132,43 @@
                     </div>
                 </div>
 
+                <!-- ALL 26 CATEGORIES RESTORED WITH EMOJIS AND NO NUMBERING -->
                 <div>
-                    <label class="block text-xs font-medium text-slate-300">🏷️ Issue Category</label>
+                    <label class="block text-xs font-medium text-slate-300">🏷️ Issue Category (26 Comprehensive List)</label>
                     <select id="category" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:border-emerald-400 focus:outline-none cursor-pointer">
-                        <option value="Water and Drinking Water">💧 Water Shortage / Contaminated Pipelines</option>
-                        <option value="Waste Management and Garbage" selected>🗑️ Garbage Dumping & Waste Accumulation</option>
-                        <option value="Drainage, Sewage and Waterlogging">🌊 Drainage Overflow & Waterlogging</option>
-                        <option value="Roads and Street Infrastructure">🛣️ Potholes & Damaged Roadways</option>
-                        <option value="Streetlights and Public Safety">💡 Non-Functional Streetlights & Dark Lanes</option>
-                        <option value="Animal, Bird and Wildlife Protection">🐾 Animal & Bird Safety and Protection</option>
+                        <option value="Water Shortage / Contaminated Pipelines">💧 Water Shortage / Contaminated Pipelines</option>
+                        <option value="Garbage Dumping & Waste Accumulation" selected>🗑️ Garbage Dumping & Waste Accumulation</option>
+                        <option value="Drainage Overflow & Waterlogging">🌊 Drainage Overflow & Waterlogging</option>
+                        <option value="Potholes & Damaged Roadways">🛣️ Potholes & Damaged Roadways</option>
+                        <option value="Non-Functional Streetlights & Dark Lanes">💡 Non-Functional Streetlights & Dark Lanes</option>
+                        <option value="Traffic Gridlock & Unsafe Crossings">🚦 Traffic Gridlock & Unsafe Crossings</option>
+                        <option value="Unsanitary Public Toilets & Sewage Leakage">🚽 Unsanitary Public Toilets & Sewage Leakage</option>
+                        <option value="Healthcare Distance & Medical Access Gaps">🏥 Healthcare Distance & Medical Access Gaps</option>
+                        <option value="Unsafe School Routes & Broken Infrastructure">🏫 Unsafe School Routes & Broken Infrastructure</option>
+                        <option value="Substandard Housing & Structural Risks">🏠 Substandard Housing & Structural Risks</option>
+                        <option value="Power Blackouts & Exposed High-Voltage Wires">⚡ Power Blackouts & Exposed High-Voltage Wires</option>
+                        <option value="Child Safety & Vulnerable Street Hazards">👶 Child Safety & Vulnerable Street Hazards</option>
+                        <option value="Encroached Parks & Broken Playgrounds">🏞️ Encroached Parks & Broken Playgrounds</option>
+                        <option value="Industrial Air, Water & Noise Pollution">🌫️ Industrial Air, Water & Noise Pollution</option>
+                        <option value="Blocked Emergency Routes & Fire Access">🚑 Blocked Emergency Routes & Fire Access</option>
+                        <option value="Dilapidated Bus Shelters & Benches">🪑 Dilapidated Bus Shelters & Benches</option>
+                        <option value="Inaccessible Ramps & Wheelchair Obstacles">♿ Inaccessible Ramps & Wheelchair Obstacles</option>
+                        <option value="Rural Infrastructure & Connectivity Gaps">🌾 Rural Infrastructure & Connectivity Gaps</option>
+                        <option value="Informal Settlement Sanitation & Drainage">🛖 Informal Settlement Sanitation & Drainage</option>
+                        <option value="Public Welfare & NGO Coordination">🤝 Public Welfare & NGO Coordination</option>
+                        <option value="Unresolved Complaints & Neglect">🏛️ Unresolved Complaints & Neglect</option>
+                        <option value="Community Verification & Local Ideas">💬 Community Verification & Local Ideas</option>
+                        <option value="Sensitive Living Conditions Safeguards">🛡️ Sensitive Living Conditions Safeguards</option>
+                        <option value="Interconnected Gaps (Water + Waste Overflow)">🔗 Interconnected Gaps (Water + Waste Overflow)</option>
+                        <option value="Other Emerging Community Issue">❓ Other Emerging Community Issue</option>
+                        <option value="Animal & Bird Safety and Protection">🐾 Animal & Bird Safety and Protection (Injured, Trapped, Abuse, Snakes, Habitat)</option>
                     </select>
+                </div>
+
+                <!-- Animal Safety Protocol -->
+                <div class="bg-purple-950 p-3 rounded-xl border border-purple-700 text-[11px] text-purple-200">
+                    <span class="font-bold text-purple-300 block mb-0.5">🐾 Animal & Wildlife Protection Protocol:</span>
+                    Report injured stray animals, birds, trapped wildlife, or dangerous animal encounters. Direct automated dispatches route to certified local rescuers & veterinary teams.
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
@@ -149,7 +176,7 @@
                         <label class="block text-xs font-medium text-slate-300">⚠️ Severity Index</label>
                         <select id="severityLevel" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 cursor-pointer">
                             <option value="HIGH">🚨 Critical / Emergency</option>
-                            <option value="MEDIUM">🟧 Moderate Risk</option>
+                            <option value="MEDIUM" selected>🟧 Moderate Risk</option>
                             <option value="LOW">🟩 Minor Issue</option>
                         </select>
                     </div>
@@ -187,6 +214,9 @@
                         <option value="Central Railway Station Terminal">🚆 Central Railway Station Terminal (Platforms & Concierge)</option>
                         <option value="International Airport Terminal">✈️ International Airport Terminal (Gates & T2/T3)</option>
                         <option value="Interstate Bus Terminus (ISBT)">🚌 Interstate Bus Terminus (ISBT Bay Areas & Stands)</option>
+                        <option value="Metro Rapid Transit Hub">🚇 Metro Rapid Transit Hub (Underground & Elevated Concourse)</option>
+                        <option value="Ferry & Water Transport Wharf">⛴️ Ferry & Water Transport Wharf (Passenger Docks)</option>
+                        <option value="Light Rail & Tram Station">🚊 Light Rail & Tram Station (Transit Stops)</option>
                     </select>
                 </div>
 
@@ -204,9 +234,9 @@
                     <div class="flex-1">
                         <span class="font-bold text-purple-950 text-xs block mb-0.5">🤖 RevAI Transit Directive:</span>
                         <p id="hubAiGuide" class="text-purple-950 leading-relaxed text-[11px]">
-                            [IDENTIFIED HAZARD]: Central Station Platform 3 indicates waste accumulation & washroom maintenance backlog.<br>
-                            [SOLUTION PLAN]: Immediate dispatch of automated floor scrubbers & 2 extra dustbins.<br>
-                            [DISPATCH STATUS]: Rapid Response Field Unit assigned.
+                            <strong>[IDENTIFIED HAZARD]:</strong> Central Station Platform 3 indicates waste accumulation & washroom maintenance backlog.<br>
+                            <strong>[SOLUTION PLAN]:</strong> Immediate dispatch of automated floor scrubbers & 2 extra dustbins.<br>
+                            <strong>[DISPATCH STATUS]:</strong> Rapid Response Field Unit assigned.
                         </p>
                     </div>
                 </div>
@@ -240,7 +270,7 @@
                 </h2>
                 <span class="bg-rose-100 text-rose-800 border border-rose-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">⚠️ Transparent Public Ledger</span>
             </div>
-            <p class="text-xs text-slate-600 mb-6">Vendors log substance sales to dispatch guardian alerts. Search any User ID to view itemized consumption counts, last purchase date, and RevAI risk scores.</p>
+            <p class="text-xs text-slate-600 mb-6">Vendors log substance sales to dispatch guardian alerts. Search any User ID to view aggregate consumption counts, last purchase date, and RevAI risk scores.</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Vendor Rapid Alert Terminal -->
@@ -264,12 +294,14 @@
                             <input type="text" id="sellerId" value="VEND-105" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100" required>
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-slate-300">🧪 Harmful Substance Category</label>
+                            <label class="block text-xs font-medium text-slate-300">🧪 Substance Category (International Standard)</label>
+                            <!-- ONLY HARMFUL SUBSTANCES INCLUDED -->
                             <select id="substanceType" class="mt-1 w-full p-2.5 text-xs glass-input-dark rounded-xl text-slate-100 focus:border-purple-400 focus:outline-none cursor-pointer">
-                                <option value="Cigarettes & Manufactured Tobacco" selected>🚬 Cigarettes & Manufactured Tobacco</option>
-                                <option value="Hookah, Vaporizers & E-Cigarettes">💨 Hookah, Vaporizers & E-Cigarettes (Vape)</option>
+                                <option value="Cigarettes & Manufactured Tobacco">🚬 Cigarettes & Manufactured Tobacco</option>
+                                <option value="Hookah, Vaporizers & E-Cigarettes" selected>💨 Hookah, Vaporizers & E-Cigarettes (Vape)</option>
                                 <option value="Alcohol & Spirits">🍺 Alcohol & Spirits (Liquor / Beer / Wine)</option>
                                 <option value="Chewing Tobacco & Snus">🍃 Chewing Tobacco & Snus</option>
+                                <option value="Controlled Substances & Prescription Misuse">💊 Controlled Substances & Prescription Misuse</option>
                             </select>
                         </div>
                     </div>
@@ -293,7 +325,7 @@
                 <div class="bg-white p-5 rounded-2xl border border-teal-200 flex flex-col justify-between shadow-inner">
                     <div>
                         <h3 class="text-sm font-bold text-teal-950 mb-1">🔍 Search User Health Ledger</h3>
-                        <p class="text-[11px] text-slate-600 mb-3">Type any User ID to calculate itemized purchase counts, last order date, and RevAI health risk status.</p>
+                        <p class="text-[11px] text-slate-600 mb-3">Type any User ID to calculate past purchases, itemized counts, last order date, and RevAI health risk status.</p>
                         
                         <div class="flex space-x-2.5 mb-4">
                             <input type="text" id="searchUserId" value="USER-997" placeholder="Enter User ID (e.g. USER-997)" class="w-full p-2.5 text-xs bg-slate-100 border border-slate-300 rounded-xl text-slate-800 focus:ring-2 focus:ring-emerald-500">
@@ -327,14 +359,14 @@
                         <!-- Detailed Medical & Health Hazards Breakdown -->
                         <div class="bg-rose-50 p-3 rounded-lg text-[11px] text-rose-950 border border-rose-200 space-y-1.5">
                             <strong class="text-rose-900 block text-xs">⚡ RevAI Comprehensive Health Assessment & Clinical Risks:</strong>
-                            <p class="leading-relaxed">High-frequency combined intake of combustible tobacco and high-proof alcohol detected. Immediate medical intervention recommended for the following projected health hazards:</p>
+                            <p class="leading-relaxed">High-frequency combined intake of combustible tobacco, vapes, and alcohol detected. Immediate guardian intervention recommended for the following projected health hazards:</p>
                             <ul class="list-disc pl-4 space-y-1 text-rose-900">
-                                <li><strong>Respiratory & Cardiovascular Impact:</strong> Chronic Bronchitis, reduced lung capacity, elevated arterial plaque formation, and severe hypertension risk.</li>
+                                <li><strong>Respiratory & Cardiovascular Impact:</strong> Chronic Bronchitis, reduced lung capacity, arterial plaque formation, and severe hypertension risk.</li>
                                 <li><strong>Oncological Hazards:</strong> Exponentially multiplied risk of Esophageal, Oral Cavity, and Lung Carcinoma due to synergistic toxicity of Nicotine + Ethanol.</li>
-                                <li><strong>Hepatic & Neurological Risks:</strong> Early-stage Fatty Liver, potential Hepatic Cirrhosis, cognitive impairment, and heightened physiological dependency.</li>
+                                <li><strong>Hepatic & Neurological Risks:</strong> Fatty Liver, potential Hepatic Cirrhosis, cognitive impairment, and heightened physiological dependency.</li>
                             </ul>
                             <div class="mt-2 pt-1 border-t border-rose-300 text-rose-900 font-semibold">
-                                🛡️ Guardian Directive: Automated health warning reminders pushed to FAM-106 dashboard & linked medical consultation desk.
+                                🛡️ Guardian Directive: Automated health warning reminders pushed to FAM-106 dashboard & linked medical desk.
                             </div>
                         </div>
                     </div>
@@ -364,6 +396,21 @@
                 labels: ['Waste Accumulation', 'Bus Schedule Board', 'Seating Benches', 'Drainage Smell', 'Security'],
                 counts: [22, 11, 16, 19, 7],
                 guide: "[IDENTIFIED HAZARD]: ISBT Bus Stand has high waste accumulation near Bay 4 & foul drainage smell.\n[SOLUTION PLAN]: Scheduled drainage cleanup and sanitation sweep.\n[DISPATCH STATUS]: Environmental Hygiene Crew assigned."
+            },
+            "Metro Rapid Transit Hub": {
+                labels: ['Pedestrian Obstacle', 'Potholes Near Metro', 'Vendor Overflow', 'Streetlight Dark', 'Dustbins'],
+                counts: [8, 13, 17, 6, 11],
+                guide: "[IDENTIFIED HAZARD]: Metro Hub reports heavy pedestrian walkway blockage due to unauthorized clutter.\n[SOLUTION PLAN]: Public space clearance and pedestrian safety audit.\n[DISPATCH STATUS]: Civic Action Field Unit deployed."
+            },
+            "Ferry & Water Transport Wharf": {
+                labels: ['Dock Litter', 'Ramp Slippage', 'Life Jacket Availability', 'Lighting', 'Seating'],
+                counts: [5, 8, 12, 4, 9],
+                guide: "[IDENTIFIED HAZARD]: Ferry Wharf requires slip-resistant coating on passenger ramps.\n[SOLUTION PLAN]: Immediate ramp resurfacing and safety gear audit.\n[DISPATCH STATUS]: Marine Public Works Crew assigned."
+            },
+            "Light Rail & Tram Station": {
+                labels: ['Track Debris', 'Ticket Vending Machine', 'Platform Crowding', 'Shelter Glass', 'Lighting'],
+                counts: [10, 7, 14, 5, 8],
+                guide: "[IDENTIFIED HAZARD]: Tram Station platform shows heavy crowding during peak hours.\n[SOLUTION PLAN]: Service frequency adjustment and platform crowd management.\n[DISPATCH STATUS]: Transit Operations Control notified."
             }
         };
 
