@@ -15,7 +15,7 @@
             color: #0f172a;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(16, 185, 129, 0.2);
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
@@ -40,7 +40,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <span class="text-2xl font-black bg-gradient-to-r from-emerald-600 via-teal-600 to-purple-600 bg-clip-text text-transparent">GREEN REV</span>
-                <span class="bg-emerald-100 text-emerald-800 text-[10px] px-3 py-1 rounded-full font-bold tracking-wider">REVAI CORE ONLINE 🟢</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] px-3 py-1 rounded-full font-bold tracking-wider">REVAI VISION CORE ACTIVE 🟢</span>
             </div>
             <div class="text-xs text-slate-500">
                 <span>Protected Citizen Portal</span>
@@ -57,14 +57,14 @@
             One Platform. <span class="bg-gradient-to-r from-emerald-600 via-teal-600 to-purple-600 bg-clip-text text-transparent">Three Action Pillars.</span>
         </h1>
         <p class="text-slate-600 text-sm max-w-2xl mx-auto">
-            Select a pillar below to report an issue, monitor public transport hubs, or verify family health risk alerts.
+            Select a pillar below to report an issue, monitor public transport hubs, or verify family health risk alerts seamlessly.
         </p>
     </section>
 
-    <!-- TRINITY INTERACTIVE PILLARS (3 Iconic Selector Cards) -->
+    <!-- TRINITY INTERACTIVE PILLARS -->
     <section class="max-w-6xl mx-auto px-6 mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Pillar 1: Civic & Environment -->
+        <!-- Pillar 1 -->
         <div id="btn-pillar-1" onclick="switchPillar(1)" class="pillar-card pillar-active glass-card p-6 rounded-3xl border-2 border-emerald-500 relative overflow-hidden">
             <div class="flex items-center justify-between mb-3">
                 <span class="text-3xl">🌿</span>
@@ -74,7 +74,7 @@
             <p class="text-xs text-slate-500 mt-1">Garbage, potholes, streetlights & animal rescues.</p>
         </div>
 
-        <!-- Pillar 2: Transit Pulse -->
+        <!-- Pillar 2 -->
         <div id="btn-pillar-2" onclick="switchPillar(2)" class="pillar-card glass-card p-6 rounded-3xl border-2 border-transparent relative overflow-hidden">
             <div class="flex items-center justify-between mb-3">
                 <span class="text-3xl">⚡</span>
@@ -84,7 +84,7 @@
             <p class="text-xs text-slate-500 mt-1">Railway platforms, bus stands & airport issues.</p>
         </div>
 
-        <!-- Pillar 3: Guardian Shield -->
+        <!-- Pillar 3 -->
         <div id="btn-pillar-3" onclick="switchPillar(3)" class="pillar-card glass-card p-6 rounded-3xl border-2 border-transparent relative overflow-hidden">
             <div class="flex items-center justify-between mb-3">
                 <span class="text-3xl">🛡️</span>
@@ -96,7 +96,7 @@
 
     </section>
 
-    <!-- DYNAMIC PILLAR CONTENT PANELS -->
+    <!-- CONTENT PANELS -->
     <main class="max-w-6xl mx-auto px-6 mt-8">
 
         <!-- PANEL 1: Neighborhood Care -->
@@ -108,12 +108,16 @@
                 <span class="text-xs text-slate-500">🔒 100% Anonymous Citizen Portal</span>
             </div>
 
-            <div id="civic-result" class="hidden mb-4 bg-emerald-100 p-4 rounded-2xl border border-emerald-300 text-xs text-emerald-950">
-                <h3 class="font-bold text-emerald-900 mb-1">🤖 RevAI Action Protocol Issued:</h3>
-                <p id="ai-plan-text" class="italic"></p>
+            <!-- Enhanced RevAI Output Box -->
+            <div id="civic-result" class="hidden mb-6 bg-slate-900 text-slate-100 p-5 rounded-2xl border-l-4 border-emerald-500 text-xs shadow-xl space-y-2">
+                <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                    <span class="font-black text-emerald-400 text-sm tracking-wide">🧠 RevAI Vision & Synthesis Report</span>
+                    <span class="bg-emerald-900/60 text-emerald-300 text-[9px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/30">DISPATCH PROTOCOL ACTIVE</span>
+                </div>
+                <div id="ai-plan-text" class="space-y-1.5 leading-relaxed pt-1"></div>
             </div>
 
-            <form id="civic-form" class="space-y-4 bg-slate-900 p-6 rounded-2xl text-slate-100">
+            <form id="civic-form" class="space-y-4 bg-slate-900 p-6 rounded-2xl text-slate-100" onsubmit="handleCivicSubmit(event)">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-medium text-slate-300">📍 Location / Lane Address</label>
@@ -123,12 +127,12 @@
                         <label class="block text-xs font-medium text-slate-300">🏷️ Issue Category (26 Comprehensive List)</label>
                         <select id="category" class="mt-1 w-full p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100 focus:outline-none focus:border-emerald-500 cursor-pointer">
                             <option value="Water Shortage / Contaminated Pipelines">💧 Water Shortage / Contaminated Pipelines</option>
-                            <option value="Garbage Dumping & Waste Accumulation" selected>🗑️ Garbage Dumping & Waste Accumulation</option>
+                            <option value="Garbage Dumping & Waste Accumulation">🗑️ Garbage Dumping & Waste Accumulation</option>
                             <option value="Drainage Overflow & Waterlogging">🌊 Drainage Overflow & Waterlogging</option>
                             <option value="Potholes & Damaged Roadways">🛣️ Potholes & Damaged Roadways</option>
                             <option value="Non-Functional Streetlights & Dark Lanes">💡 Non-Functional Streetlights & Dark Lanes</option>
                             <option value="Traffic Gridlock & Unsafe Crossings">🚦 Traffic Gridlock & Unsafe Crossings</option>
-                            <option value="Unsanitary Public Toilets & Sewage Leakage">Toilet Unsanitary Public Toilets & Sewage Leakage</option>
+                            <option value="Unsanitary Public Toilets & Sewage Leakage">🚽 Unsanitary Public Toilets & Sewage Leakage</option>
                             <option value="Healthcare Distance & Medical Access Gaps">🏥 Healthcare Distance & Medical Access Gaps</option>
                             <option value="Unsafe School Routes & Broken Infrastructure">🏫 Unsafe School Routes & Broken Infrastructure</option>
                             <option value="Substandard Housing & Structural Risks">🏠 Substandard Housing & Structural Risks</option>
@@ -136,7 +140,7 @@
                             <option value="Child Safety & Vulnerable Street Hazards">👶 Child Safety & Vulnerable Street Hazards</option>
                             <option value="Encroached Parks & Broken Playgrounds">🏞️ Encroached Parks & Broken Playgrounds</option>
                             <option value="Industrial Air, Water & Noise Pollution">🌫️ Industrial Air, Water & Noise Pollution</option>
-                            <option value="Blocked Emergency Routes & Fire Access">🚑 Blocked Emergency Routes & Fire Access</option>
+                            <option value="Blocked Emergency Routes & Fire Access" selected>🚑 Blocked Emergency Routes & Fire Access</option>
                             <option value="Dilapidated Bus Shelters & Benches">🪑 Dilapidated Bus Shelters & Benches</option>
                             <option value="Inaccessible Ramps & Wheelchair Obstacles">♿ Inaccessible Ramps & Wheelchair Obstacles</option>
                             <option value="Rural Infrastructure & Connectivity Gaps">🌾 Rural Infrastructure & Connectivity Gaps</option>
@@ -156,8 +160,8 @@
                     <div>
                         <label class="block text-xs font-medium text-slate-300">⚠️ Severity Index</label>
                         <select id="severityLevel" class="mt-1 w-full p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100 cursor-pointer">
-                            <option value="HIGH">🚨 Critical / Emergency</option>
-                            <option value="MEDIUM" selected>🟧 Moderate Risk</option>
+                            <option value="HIGH" selected>🚨 Critical / Emergency</option>
+                            <option value="MEDIUM">🟧 Moderate Risk</option>
                             <option value="LOW">🟩 Minor Issue</option>
                         </select>
                     </div>
@@ -167,8 +171,8 @@
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition text-xs uppercase tracking-wider">
-                    ⚡ Submit Report & Trigger RevAI Action
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition text-xs uppercase tracking-wider shadow-lg">
+                    ⚡ Trigger RevAI Multi-Modal Scan & Autonomous Action
                 </button>
             </form>
         </div>
@@ -179,30 +183,29 @@
                 <h2 class="text-xl font-bold text-purple-950 flex items-center">
                     <span class="mr-2">⚡</span> Public Transit Terminal Pulse
                 </h2>
-                <span class="text-xs text-slate-500">📢 Public Hub Broadcast</span>
+                <span class="text-xs text-slate-500">📢 High-Footfall Transit Broadcast</span>
+            </div>
+
+            <div id="hub-result" class="hidden mb-6 bg-slate-900 text-slate-100 p-5 rounded-2xl border-l-4 border-purple-500 text-xs shadow-xl space-y-2">
+                <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                    <span class="font-black text-purple-400 text-sm tracking-wide">🚆 RevAI Transit Vision Directive</span>
+                    <span class="bg-purple-900/60 text-purple-300 text-[9px] font-bold px-2.5 py-0.5 rounded-full border border-purple-500/30">BROADCAST TRANSMITTED</span>
+                </div>
+                <div id="hub-ai-plan-text" class="space-y-1.5 leading-relaxed pt-1"></div>
             </div>
 
             <div class="mb-4">
                 <label class="block text-xs font-semibold text-slate-700 mb-1">Select Transit Hub:</label>
-                <select id="hubName" onchange="updateHubDirective()" class="w-full p-2.5 bg-white border border-purple-300 rounded-xl text-xs font-medium text-purple-900 cursor-pointer">
-                    <option value="Central Railway Station Terminal">🚆 Central Railway Station Terminal</option>
+                <select id="hubName" class="w-full p-2.5 bg-white border border-purple-300 rounded-xl text-xs font-medium text-purple-900 cursor-pointer">
+                    <option value="Central Railway Station Terminal" selected>🚆 Central Railway Station Terminal</option>
                     <option value="International Airport Terminal">✈️ International Airport Terminal</option>
                     <option value="Interstate Bus Terminus (ISBT)">🚌 Interstate Bus Terminus (ISBT)</option>
                     <option value="Metro Rapid Transit Hub">🚇 Metro Rapid Transit Hub</option>
                 </select>
             </div>
 
-            <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200 mb-4 text-xs">
-                <strong class="text-purple-950 block mb-1">🤖 RevAI Transit Status Directive:</strong>
-                <p id="hubAiGuide" class="text-slate-700 leading-relaxed">
-                    <strong>[IDENTIFIED HAZARD]:</strong> Platform 3 indicates waste accumulation & washroom maintenance backlog.<br>
-                    <strong>[SOLUTION PLAN]:</strong> Dispatch automated floor scrubbers & 2 extra dustbins.<br>
-                    <strong>[DISPATCH STATUS]:</strong> Rapid Response Field Unit assigned.
-                </p>
-            </div>
-
-            <form id="public-hub-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100">
-                <input type="text" id="hubIssue" placeholder="Describe platform issue (e.g. Broken Escalator at Gate 2)" class="w-full p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100" required>
+            <form id="public-hub-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="handleHubSubmit(event)">
+                <input type="text" id="hubIssue" value="Broken stairs & missing handrail at Platform 3" placeholder="Describe platform issue..." class="w-full p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100" required>
                 <div class="grid grid-cols-2 gap-3">
                     <select id="hubSeverity" class="p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100">
                         <option value="HIGH">🚨 Critical Hazard</option>
@@ -211,8 +214,8 @@
                     </select>
                     <input type="file" id="hubPhoto" class="text-[10px] text-slate-300 file:mr-1 file:py-1 file:px-2 file:rounded-lg file:border-0 file:bg-purple-800 file:text-purple-100" required>
                 </div>
-                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition text-xs uppercase tracking-wider">
-                    📢 Broadcast Platform Issue
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition text-xs uppercase tracking-wider shadow-lg">
+                    📢 Execute Hub Broadcast & AI Safety Directive
                 </button>
             </form>
         </div>
@@ -226,9 +229,17 @@
                 <span class="text-xs text-slate-500">⚠️ Family Health Protection Ledger</span>
             </div>
 
+            <div id="health-result" class="hidden mb-6 bg-slate-900 text-slate-100 p-5 rounded-2xl border-l-4 border-rose-500 text-xs shadow-xl space-y-2">
+                <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                    <span class="font-black text-rose-400 text-sm tracking-wide">🛡️ RevAI Health Assessment & Alert Protocol</span>
+                    <span class="bg-rose-900/60 text-rose-300 text-[9px] font-bold px-2.5 py-0.5 rounded-full border border-rose-500/30">GUARDIAN ALERT DISPATCHED</span>
+                </div>
+                <div id="health-ai-plan-text" class="space-y-1.5 leading-relaxed pt-1"></div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Vendor Log -->
-                <form id="health-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100">
+                <form id="health-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="handleHealthSubmit(event)">
                     <h3 class="text-sm font-bold text-rose-300 mb-1">🏪 Vendor Rapid Log</h3>
                     <div class="grid grid-cols-2 gap-2">
                         <input type="text" id="userId" value="USER-997" placeholder="User ID" class="p-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-slate-100" required>
@@ -240,8 +251,8 @@
                         <option value="Alcohol & Spirits">🍺 Alcohol & Spirits</option>
                         <option value="Chewing Tobacco & Snus">🍃 Chewing Tobacco & Snus</option>
                     </select>
-                    <button type="submit" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl transition text-xs uppercase tracking-wider">
-                        🚨 Log Purchase & Alert Guardian
+                    <button type="submit" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl transition text-xs uppercase tracking-wider shadow-lg">
+                        🚨 Log Purchase & Trigger Health Assessment
                     </button>
                 </form>
 
@@ -278,13 +289,13 @@
 
     </main>
 
-    <!-- REAL-TIME WAVY GRAPH (Continuous World / City Hazard Pulse) -->
+    <!-- REAL-TIME WAVY GRAPH -->
     <section class="max-w-6xl mx-auto px-6 mt-10 mb-16">
         <div class="glass-card p-6 rounded-3xl border border-emerald-300/60 shadow-lg">
             <div class="flex justify-between items-center mb-3">
-                <span class="text-xs font-bold text-emerald-950 flex items-center">
+                <span id="chartTitle" class="text-xs font-bold text-emerald-950 flex items-center">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping mr-2"></span>
-                    Global & City Real-Time Wavy Hazard Index (Top 5 Hazards)
+                    Neighborhood Care & Top 5 Hazard Analytics
                 </span>
                 <span class="text-[10px] text-slate-500">Continuous RevAI Stream</span>
             </div>
@@ -294,43 +305,71 @@
         </div>
     </section>
 
-    <!-- JS LOGIC -->
+    <!-- JS LOGIC WITH STRONG & IMPACTFUL REVAI VISION SYNTHESIS -->
     <script>
         let wavyChartInstance = null;
 
+        const chartDatasets = {
+            1: {
+                title: "🌿 Neighborhood Care & Top 5 Civic Issues",
+                labels: ['Garbage Accumulation', 'Water Contamination', 'Potholes & Roads', 'Streetlight Failures', 'Stray Animal Distress'],
+                data: [92, 78, 85, 64, 58],
+                borderColor: '#059669',
+                bgColor: 'rgba(16, 185, 129, 0.15)'
+            },
+            2: {
+                title: "⚡ Public Transit Hubs & Top 5 Terminal Gaps",
+                labels: ['Platform Cleanliness', 'Escalator / Lift Failures', 'Washroom Sanitation', 'Water Vending Gaps', 'Crowd / Ticketing Congestion'],
+                data: [88, 76, 94, 62, 70],
+                borderColor: '#7c3aed',
+                bgColor: 'rgba(124, 58, 237, 0.15)'
+            },
+            3: {
+                title: "🛡️ Public Health Guardian & Top 5 Substance Risks",
+                labels: ['Hookah / Vape Access', 'Cigarette Purchases', 'Alcohol & Spirits', 'Chewing Tobacco', 'Unmonitored Vendors'],
+                data: [82, 95, 89, 71, 67],
+                borderColor: '#e11d48',
+                bgColor: 'rgba(225, 29, 72, 0.15)'
+            }
+        };
+
         window.onload = () => {
-            initWavyChart();
+            initWavyChart(1);
         };
 
         function switchPillar(pillarNum) {
-            // Reset active states on cards
             for (let i = 1; i <= 3; i++) {
-                document.getElementById(`btn-pillar-${i}`).classList.remove('pillar-active');
-                document.getElementById(`btn-pillar-${i}`).classList.remove('border-emerald-500');
+                document.getElementById(`btn-pillar-${i}`).classList.remove('pillar-active', 'border-emerald-500', 'border-purple-500', 'border-rose-500');
                 document.getElementById(`panel-pillar-${i}`).classList.add('hidden');
             }
 
-            // Set active panel
-            document.getElementById(`btn-pillar-${pillarNum}`).classList.add('pillar-active');
-            document.getElementById(`btn-pillar-${pillarNum}`).classList.add('border-emerald-500');
+            const activeBtn = document.getElementById(`btn-pillar-${pillarNum}`);
+            activeBtn.classList.add('pillar-active');
+            if(pillarNum === 1) activeBtn.classList.add('border-emerald-500');
+            if(pillarNum === 2) activeBtn.classList.add('border-purple-500');
+            if(pillarNum === 3) activeBtn.classList.add('border-rose-500');
+
             document.getElementById(`panel-pillar-${pillarNum}`).classList.remove('hidden');
+            updateChartData(pillarNum);
         }
 
-        function initWavyChart() {
+        function initWavyChart(pillarNum) {
             const ctx = document.getElementById('wavyHazardChart').getContext('2d');
+            const config = chartDatasets[pillarNum];
+            
             wavyChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Water Pollution', 'Waste Accumulation', 'Substance Abuse Risk', 'Public Transit Gaps', 'Stray Animal Distress'],
+                    labels: config.labels,
                     datasets: [{
-                        label: 'Real-Time Hazard Index',
-                        data: [78, 92, 64, 45, 58],
-                        borderColor: '#059669',
-                        backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                        label: 'Severity / Report Index',
+                        data: config.data,
+                        borderColor: config.borderColor,
+                        backgroundColor: config.bgColor,
                         fill: true,
-                        tension: 0.45, // Wavy fluid curve
+                        tension: 0.45,
                         borderWidth: 3,
-                        pointBackgroundColor: '#047857',
+                        pointBackgroundColor: config.borderColor,
                         pointRadius: 5
                     }]
                 },
@@ -338,54 +377,99 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, max: 100 }
-                    }
+                    scales: { y: { beginAtZero: true, max: 100 } }
                 }
             });
         }
 
-        // Civic Form Submit Dynamic Update
-        document.getElementById('civic-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const categorySelect = document.getElementById('category');
-            const selectedText = categorySelect.options[categorySelect.selectedIndex].text;
-
-            const resultDiv = document.getElementById('civic-result');
-            const planText = document.getElementById('ai-plan-text');
-            resultDiv.classList.remove('hidden');
-
-            planText.innerHTML = `
-                <strong>[IDENTIFIED HAZARD]:</strong> ${selectedText} reported with photo verification.<br>
-                <strong>[SOLUTION PLAN]:</strong> Autonomous dispatch of specialized Civic Action Task Force.<br>
-                <strong>[DISPATCH STATUS]:</strong> Rapid Response Field Unit deployed successfully.
-            `;
-
-            // Dynamic Chart Spike
-            if (wavyChartInstance) {
-                wavyChartInstance.data.datasets[0].data[1] += 2;
+        function updateChartData(pillarNum) {
+            const config = chartDatasets[pillarNum];
+            document.getElementById('chartTitle').innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping mr-2"></span>${config.title}`;
+            
+            if(wavyChartInstance) {
+                wavyChartInstance.data.labels = config.labels;
+                wavyChartInstance.data.datasets[0].data = config.data;
+                wavyChartInstance.data.datasets[0].borderColor = config.borderColor;
+                wavyChartInstance.data.datasets[0].backgroundColor = config.bgColor;
+                wavyChartInstance.data.datasets[0].pointBackgroundColor = config.borderColor;
                 wavyChartInstance.update();
             }
-        });
+        }
 
-        function updateHubDirective() {
+        /* HIGH-IMPACT REVAI VISION ANALYSIS FOR CIVIC ISSUES */
+        function handleCivicSubmit(e) {
+            e.preventDefault();
+            const categorySelect = document.getElementById('category');
+            const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+            const location = document.getElementById('locationAddress').value;
+            const photoInput = document.getElementById('civicPhoto');
+            const fileName = photoInput.files.length > 0 ? photoInput.files[0].name : "evidence_scan.jpg";
+
+            const res = document.getElementById('civic-result');
+            res.classList.remove('hidden');
+
+            document.getElementById('ai-plan-text').innerHTML = `
+                <div class="text-amber-300 font-semibold mb-1">🔍 <strong>RevAI Optical & Multi-Modal Analysis (${fileName}):</strong></div>
+                <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-slate-300 mb-2">
+                    <em>Visual scan detected critical density blockage at <strong>${location}</strong>. High risk of structural obstruction, public safety hazard, and delayed emergency response. Image metadata verified.</em>
+                </div>
+                <p><strong>🚨 Severe Risk Assessment:</strong> High Priority Level 1 Threat to pedestrian movement and emergency corridor access.</p>
+                <p><strong>🛠️ Autonomous Solution Directive:</strong> Immediate deployment of heavy clearance task force. Automated route diversion pushed to emergency services.</p>
+                <p class="text-emerald-400 font-bold mt-1">⚡ Protocol Status: Task Force Dispatched | Zero-Tolerance Clearance Enforcement Triggered.</p>
+            `;
+
+            if (wavyChartInstance) {
+                wavyChartInstance.data.datasets[0].data[0] += 3;
+                wavyChartInstance.update();
+            }
+        }
+
+        /* HIGH-IMPACT REVAI VISION ANALYSIS FOR TRANSIT HUBS */
+        function handleHubSubmit(e) {
+            e.preventDefault();
             const hub = document.getElementById('hubName').value;
-            const guide = document.getElementById('hubAiGuide');
-            guide.innerHTML = `<strong>[IDENTIFIED HAZARD]:</strong> ${hub} reports high-footfall maintenance alert.<br><strong>[SOLUTION PLAN]:</strong> Rapid sanitation and safety crew assigned.<br><strong>[DISPATCH STATUS]:</strong> Dispatched.`;
+            const issue = document.getElementById('hubIssue').value;
+            const photoInput = document.getElementById('hubPhoto');
+            const fileName = photoInput.files.length > 0 ? photoInput.files[0].name : "terminal_scan.jpg";
+
+            const res = document.getElementById('hub-result');
+            res.classList.remove('hidden');
+
+            document.getElementById('hub-ai-plan-text').innerHTML = `
+                <div class="text-purple-300 font-semibold mb-1">📸 <strong>RevAI Vision Terminal Scan (${fileName}):</strong></div>
+                <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-slate-300 mb-2">
+                    <em>Image analysis confirms physical structural damage / safety breach at <strong>${hub}</strong>. Problem: "${issue}". High footfall accident risk detected.</em>
+                </div>
+                <p><strong>🚨 Structural Risk Assessment:</strong> Immediate threat to commuter mobility, platform safety, and structural compliance.</p>
+                <p><strong>🛠️ Immediate Action Plan:</strong> Cordoning off affected stairwells/escalators, automated broadcast to station master desk, and priority dispatch of engineering repair crew.</p>
+                <p class="text-purple-300 font-bold mt-1">📢 Broadcast Status: Live Safety Directive Transmitted to Terminal Engineering Unit.</p>
+            `;
+        }
+
+        /* HIGH-IMPACT REVAI HEALTH GUARDIAN ALERT */
+        function handleHealthSubmit(e) {
+            e.preventDefault();
+            const uid = document.getElementById('userId').value;
+            const fam = document.getElementById('familyMemberId').value;
+            const sub = document.getElementById('substanceType').value;
+
+            const res = document.getElementById('health-result');
+            res.classList.remove('hidden');
+
+            document.getElementById('health-ai-plan-text').innerHTML = `
+                <div class="text-rose-300 font-semibold mb-1">🧬 <strong>RevAI Public Health Risk Ledger:</strong></div>
+                <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-slate-300 mb-2">
+                    <em>Logged purchase of <strong>${sub}</strong> for User ID <strong>${uid}</strong> linked to Family Ledger <strong>${fam}</strong>. Cumulative frequency cross-referenced with medical risk databases.</em>
+                </div>
+                <p><strong>🚨 Clinical Risk Warning:</strong> High cumulative threshold for respiratory, cardiovascular, and addiction vulnerabilities.</p>
+                <p><strong>🛡️ Protective Protocol:</strong> Instant encrypted SMS/Email alert pushed to linked Family Guardian (${fam}). Automated clinical counseling pathway activated.</p>
+                <p class="text-rose-400 font-bold mt-1">⚡ Protocol Status: Family Guardian Shield Alert Dispatched.</p>
+            `;
         }
 
         function searchUserRecord() {
             const uid = document.getElementById('searchUserId').value;
             document.getElementById('rec-uid').innerText = uid;
-            const cig = Math.floor(Math.random() * 5) + 5;
-            const alc = Math.floor(Math.random() * 4) + 2;
-            const vape = Math.floor(Math.random() * 3) + 1;
-
-            document.getElementById('itemized-ledger-list').innerHTML = `
-                <li>Cigarettes: <strong>${cig} Purchases</strong></li>
-                <li>Alcohol & Spirits: <strong>${alc} Purchases</strong></li>
-                <li>Hookah & Vapes: <strong>${vape} Purchases</strong></li>
-            `;
         }
     </script>
 </body>
