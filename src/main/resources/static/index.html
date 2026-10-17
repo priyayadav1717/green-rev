@@ -117,7 +117,7 @@
                 <div id="ai-plan-text" class="space-y-1.5 leading-relaxed pt-1"></div>
             </div>
 
-            <form id="civic-form" class="space-y-4 bg-slate-900 p-6 rounded-2xl text-slate-100" onsubmit="handleCivicSubmit(event)">
+            <form id="civic-form" class="space-y-4 bg-slate-900 p-6 rounded-2xl text-slate-100" onsubmit="return handleCivicSubmit(event)">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-medium text-slate-300">📍 Location / Lane Address</label>
@@ -204,7 +204,7 @@
                 </select>
             </div>
 
-            <form id="public-hub-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="handleHubSubmit(event)">
+            <form id="public-hub-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="return handleHubSubmit(event)">
                 <input type="text" id="hubIssue" value="Broken stairs & missing handrail at Platform 3" placeholder="Describe platform issue..." class="w-full p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100" required>
                 <div class="grid grid-cols-2 gap-3">
                     <select id="hubSeverity" class="p-2.5 text-xs bg-slate-800 border border-slate-700 rounded-xl text-slate-100">
@@ -239,7 +239,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Vendor Log -->
-                <form id="health-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="handleHealthSubmit(event)">
+                <form id="health-form" class="space-y-3 bg-slate-900 p-5 rounded-2xl text-slate-100" onsubmit="return handleHealthSubmit(event)">
                     <h3 class="text-sm font-bold text-rose-300 mb-1">🏪 Vendor Rapid Log</h3>
                     <div class="grid grid-cols-2 gap-2">
                         <input type="text" id="userId" value="USER-997" placeholder="User ID" class="p-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-slate-100" required>
@@ -407,21 +407,23 @@
 
             const res = document.getElementById('civic-result');
             res.classList.remove('hidden');
+            res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             document.getElementById('ai-plan-text').innerHTML = `
                 <div class="text-amber-300 font-semibold mb-1">🔍 <strong>RevAI Optical & Multi-Modal Analysis (${fileName}):</strong></div>
                 <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-slate-300 mb-2">
-                    <em>Visual scan detected critical density blockage at <strong>${location}</strong>. High risk of structural obstruction, public safety hazard, and delayed emergency response. Image metadata verified.</em>
+                    <em>Visual scan detected critical severity anomaly for <strong>"${categoryText}"</strong> at <strong>${location}</strong>. High risk of public safety hazard and infrastructure degradation. Image metadata verified.</em>
                 </div>
-                <p><strong>🚨 Severe Risk Assessment:</strong> High Priority Level 1 Threat to pedestrian movement and emergency corridor access.</p>
-                <p><strong>🛠️ Autonomous Solution Directive:</strong> Immediate deployment of heavy clearance task force. Automated route diversion pushed to emergency services.</p>
-                <p class="text-emerald-400 font-bold mt-1">⚡ Protocol Status: Task Force Dispatched | Zero-Tolerance Clearance Enforcement Triggered.</p>
+                <p><strong>🚨 Severe Risk Assessment:</strong> High Priority Level 1 Threat requiring immediate public works intervention.</p>
+                <p><strong>🛠️ Autonomous Solution Directive:</strong> Immediate dispatch of specialized regional task force. Geo-fenced alert transmitted to municipal command center.</p>
+                <p class="text-emerald-400 font-bold mt-1">⚡ Protocol Status: Task Force Dispatched | Zero-Tolerance Remediation Enforcement Triggered.</p>
             `;
 
             if (wavyChartInstance) {
                 wavyChartInstance.data.datasets[0].data[0] += 3;
                 wavyChartInstance.update();
             }
+            return false;
         }
 
         /* HIGH-IMPACT REVAI VISION ANALYSIS FOR TRANSIT HUBS */
@@ -434,16 +436,18 @@
 
             const res = document.getElementById('hub-result');
             res.classList.remove('hidden');
+            res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             document.getElementById('hub-ai-plan-text').innerHTML = `
                 <div class="text-purple-300 font-semibold mb-1">📸 <strong>RevAI Vision Terminal Scan (${fileName}):</strong></div>
                 <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 text-slate-300 mb-2">
-                    <em>Image analysis confirms physical structural damage / safety breach at <strong>${hub}</strong>. Problem: "${issue}". High footfall accident risk detected.</em>
+                    <em>Image analysis confirms physical structural damage / safety breach at <strong>${hub}</strong>. Reported Issue: "${issue}". High footfall accident risk detected.</em>
                 </div>
-                <p><strong>🚨 Structural Risk Assessment:</strong> Immediate threat to commuter mobility, platform safety, and structural compliance.</p>
-                <p><strong>🛠️ Immediate Action Plan:</strong> Cordoning off affected stairwells/escalators, automated broadcast to station master desk, and priority dispatch of engineering repair crew.</p>
+                <p><strong>🚨 Structural Risk Assessment:</strong> Immediate threat to commuter mobility, platform safety compliance, and crowd control.</p>
+                <p><strong>🛠️ Immediate Action Plan:</strong> Cordoning off affected zone, automated broadcast to station master desk, and priority dispatch of engineering repair crew.</p>
                 <p class="text-purple-300 font-bold mt-1">📢 Broadcast Status: Live Safety Directive Transmitted to Terminal Engineering Unit.</p>
             `;
+            return false;
         }
 
         /* HIGH-IMPACT REVAI HEALTH GUARDIAN ALERT */
@@ -455,6 +459,7 @@
 
             const res = document.getElementById('health-result');
             res.classList.remove('hidden');
+            res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             document.getElementById('health-ai-plan-text').innerHTML = `
                 <div class="text-rose-300 font-semibold mb-1">🧬 <strong>RevAI Public Health Risk Ledger:</strong></div>
@@ -465,6 +470,7 @@
                 <p><strong>🛡️ Protective Protocol:</strong> Instant encrypted SMS/Email alert pushed to linked Family Guardian (${fam}). Automated clinical counseling pathway activated.</p>
                 <p class="text-rose-400 font-bold mt-1">⚡ Protocol Status: Family Guardian Shield Alert Dispatched.</p>
             `;
+            return false;
         }
 
         function searchUserRecord() {
