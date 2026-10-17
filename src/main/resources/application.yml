@@ -17,4 +17,4 @@ spring:
 
 google:
   gemini:
-    api-key: ${GEMINI_API_KEY:AQ.Ab8RN6Iz39go8TtSRgzXLxhGoFe-ifyUco64432iKR5zwm0Sng}
+    api-key: ${GEMINI_API_KEY}
